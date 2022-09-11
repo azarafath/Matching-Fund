@@ -67,7 +67,7 @@ class AuthServices {
     try {
       final token = await getToken();
       final user = data.copyWith(token: token);
-      final result = await http.post(
+      await http.post(
         Uri.parse('${ApiPath.baseUrl}/update_user/${user.id}'),
         body: data.toJson(),
       );
@@ -80,7 +80,7 @@ class AuthServices {
     try {
       final token = await getToken();
       final user = data.copyWith(token: token);
-      final result = await http.post(
+      await http.post(
         Uri.parse('${ApiPath.baseUrl}/change_password/${user.id}'),
         body: data.toJson(),
       );
@@ -103,6 +103,26 @@ class AuthServices {
     }
   }
 
+  Future<LoginFormModel> getCredentialFromLocal() async {
+    try {
+      const storage = FlutterSecureStorage();
+      Map<String, String> values = await storage.readAll();
+
+      if (values['token'] != null) {
+        final LoginFormModel data = LoginFormModel(
+          email: values['email'],
+          password: values['password'],
+        );
+
+        return data;
+      } else {
+        throw 'unauthenticated';
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<String> getToken() async {
     String token = '';
 
@@ -116,7 +136,6 @@ class AuthServices {
     return token;
   }
 
-  @override
   Future<void> clearLocalStorage() async {
     try {
       const storage = FlutterSecureStorage();
