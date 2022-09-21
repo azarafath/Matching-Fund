@@ -52,29 +52,28 @@ class OnboardingPage extends StatelessWidget {
       return Center(
         child: Container(
           margin: EdgeInsets.only(top: getProportionateScreenHeight(16)),
-          child: Text(
-            'Bisnis Hijau bagi UMKM Tangguh \nMemanfaatkan Arsitektur Microservice \ndan Machine Learning.',
-            style: blackTextStyle.copyWith(
-              fontSize: 13,
-              fontWeight: regular,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      );
-    }
-
-    Widget konten2() {
-      return Center(
-        child: Container(
-          margin: EdgeInsets.only(top: getProportionateScreenHeight(8)),
-          child: Text(
-            'Pemulihan ekonomi ramah lingkungan \nyang akan mendorong peningkatan \nproduksi dengan biaya input dan \noperasional yang lebih rendah dan \nefisien, serta melestarikan \nlingkungan.',
-            style: blackTextStyle.copyWith(
-              fontSize: 13,
-              fontWeight: regular,
-            ),
-            textAlign: TextAlign.center,
+          child: Column(
+            children: [
+              Text(
+                'Bisnis Hijau bagi UMKM Tangguh \nMemanfaatkan Arsitektur Microservice \ndan Machine Learning.',
+                style: blackTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: regular,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(8),
+              ),
+              Text(
+                'Pemulihan ekonomi ramah lingkungan \nyang akan mendorong peningkatan \nproduksi dengan biaya input dan \noperasional yang lebih rendah dan \nefisien, serta melestarikan \nlingkungan.',
+                style: blackTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: regular,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
       );
@@ -122,7 +121,6 @@ class OnboardingPage extends StatelessWidget {
             title(),
             imagekonten(),
             konten(),
-            konten2(),
             button(),
           ],
         ),
