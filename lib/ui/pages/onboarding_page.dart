@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matchingfund/shared/shared.dart';
+import 'package:matchingfund/ui/ui.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class OnboardingPage extends StatelessWidget {
         child: Text(
           'Selamat datang \ndi Eco-Crowdinvesting !',
           style: blackTextStyle.copyWith(
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: semiBold,
           ),
           textAlign: TextAlign.center,
@@ -42,7 +43,6 @@ class OnboardingPage extends StatelessWidget {
           child: // image
               Image.asset(
             'assets/images/onboarding.png',
-            fit: BoxFit.cover,
           ),
         ),
       );
@@ -80,34 +80,11 @@ class OnboardingPage extends StatelessWidget {
     }
 
     Widget button() {
-      return Padding(
-        padding: EdgeInsets.only(
-            left: getProportionateScreenWidth(24),
-            right: getProportionateScreenWidth(24)),
-        child: Center(
-          child: Container(
-            margin: EdgeInsets.only(top: getProportionateScreenHeight(40)),
-            width: double.infinity,
-            height: getProportionateScreenHeight(62),
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/loginpage');
-              },
-              style: TextButton.styleFrom(
-                  backgroundColor: kBlackColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(22),
-                  )),
-              child: Text(
-                'Get Started',
-                style: whiteTextStyle.copyWith(
-                  fontSize: 18,
-                  fontWeight: semiBold,
-                ),
-              ),
-            ),
-          ),
-        ),
+      return CustomButton(
+        label: 'Mulai',
+        onPressed: () {
+          Navigator.pushNamed(context, '/loginpage');
+        },
       );
     }
 
